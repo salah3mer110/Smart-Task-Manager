@@ -1,0 +1,11 @@
+<div class="position-relative w-100" style="height:600px;">
+    <img [src]="imgPath" alt="img" class="w-100 h-100" style="object-fit: cover;">
+
+    <button class="btn btn-dark opacity-75 position-absolute top-50 start-0 translate-middle-y ms-2" (click)="prev()">
+        &larr;
+    </button>
+
+    <button class="btn btn-dark opacity-75 position-absolute top-50 end-0 translate-middle-y me-2" (click)="next()">
+        &rarr;
+    </button>
+</div>

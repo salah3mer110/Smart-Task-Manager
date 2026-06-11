@@ -1,0 +1,24 @@
+<nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+    <div class="container">
+        <a class="navbar-brand" routerLink="home">Company Name</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="nav navbar-nav me-auto">
+                <li class="nav-item" role="presentation"><a class="nav-link" routerLinkActive="bg-info text-black"
+                        routerLink="home">Home</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" routerLinkActive="bg-info text-black"
+                        routerLink="addTask">Add Task</a>
+                </li>
+                <li class="nav-item" role="presentation"><a class="nav-link" routerLinkActive="bg-info text-black"
+                        routerLink="taskList">Task List</a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                <a routerLink="/login" class="login">Log In</a>
+            </span>
+            <a class="btn btn-light action-button ms-2" role="button" routerLink="/signUp">Sign Up</a>
+        </div>
+    </div>
+</nav>
