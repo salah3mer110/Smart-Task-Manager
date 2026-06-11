@@ -1,0 +1,33 @@
+<div class="container my-4">
+    <h2 class="mb-4 fw-bold">Task List</h2>
+
+    <div class="btn-group mb-4 w-100" role="group">
+        <a class="btn" [class.btn-primary]="tasksStatus === 'all'" [class.btn-outline-primary]="tasksStatus !== 'all'"
+            (click)="tasksStatus='all'">
+            All Tasks
+        </a>
+        <a class="btn" [class.btn-success]="tasksStatus === 'done'" [class.btn-outline-success]="tasksStatus !== 'done'"
+            (click)="tasksStatus='done'">
+            Completed Tasks
+        </a>
+        <a class="btn" [class.btn-danger]="tasksStatus === 'notDone'"
+            [class.btn-outline-danger]="tasksStatus !== 'notDone'" (click)="tasksStatus='notDone'">
+
+            Not Completed Tasks
+        </a>
+    </div>
+
+    <ul class="list-unstyled d-flex flex-column gap-3">
+        @if(filteredTasks.length > 0) {
+        @for(task of filteredTasks; track task.id) {
+        <app-task-card (edit)="edit.emit($event)" [task]="task">
+        </app-task-card>
+        }
+        } @else {
+        <div class="text-center text-muted py-5">
+            <i class="fs-1">📭</i>
+            <h3 class="mt-3">You have no tasks!</h3>
+        </div>
+        }
+    </ul>
+</div>
