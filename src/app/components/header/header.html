@@ -1,24 +1,52 @@
-<nav class="navbar navbar-dark navbar-expand-md navigation-clean-search">
+<nav class="navbar navbar-expand-md shadow-sm" style="background: linear-gradient(135deg, #184e8e, #21a9af);">
     <div class="container">
-        <a class="navbar-brand" routerLink="home">Company Name</a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-1">
+
+        <a class="navbar-brand fw-bold text-white fs-4" routerLink="home">
+            TaskManager
+        </a>
+
+        <button class="navbar-toggler border-0" data-bs-toggle="collapse" data-bs-target="#navcol-1">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav me-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link" routerLinkActive="bg-info text-black"
-                        routerLink="home">Home</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" routerLinkActive="bg-info text-black"
-                        routerLink="addTask">Add Task</a>
+
+            <ul class="navbar-nav me-auto gap-1">
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3 py-2 rounded-3" routerLink="home"
+                        routerLinkActive="bg-white active-link fw-semibold">
+                        Home
+                    </a>
                 </li>
-                <li class="nav-item" role="presentation"><a class="nav-link" routerLinkActive="bg-info text-black"
-                        routerLink="taskList">Task List</a>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3 py-2 rounded-3" routerLink="addTask"
+                        routerLinkActive="bg-white active-link fw-semibold">
+                        Add Task
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3 py-2 rounded-3" routerLink="taskList"
+                        routerLinkActive="bg-white active-link fw-semibold">
+                        Task List
+                    </a>
                 </li>
             </ul>
-            <span class="navbar-text">
-                <a routerLink="/login" class="login">Log In</a>
-            </span>
-            <a class="btn btn-light action-button ms-2" role="button" routerLink="/signUp">Sign Up</a>
+            @if(!authServices.checkLogin()){
+            <div class="d-flex align-items-center gap-2">
+                <a routerLink="/login" class="btn btn-outline-light btn-sm px-3">
+                    Log In
+                </a>
+                <a routerLink="/signUp" class="btn btn-light btn-sm px-3 fw-semibold text-primary">
+                    Sign Up
+                </a>
+            </div>
+            }
+            @else {
+            <a (click)="onLogout()" routerLink="home" class="btn btn-outline-light btn-sm px-3">
+                Log out
+            </a>
+            }
+
         </div>
     </div>
 </nav>

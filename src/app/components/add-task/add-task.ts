@@ -7,9 +7,9 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Task } from '../task.model';
-import { TasksService } from '../tasksService.service';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Task } from '../../shared/models/task.model';
+import { TasksService } from '../../shared/services/tasksService.service';
 
 @Component({
   selector: 'app-add-task',
@@ -41,7 +41,7 @@ export class AddTask implements OnChanges {
     }
   }
 
-  onSubmitTask() {
+  onSubmitTask(form: NgForm) {
     this.taskServices.addTask({
       id: this.taskToEdit?.id ?? crypto.randomUUID(),
       title: this.enteredTitle,
@@ -52,6 +52,7 @@ export class AddTask implements OnChanges {
       tags: this.enteredTags,
       status: this.taskToEdit?.status ?? 'notDone',
     });
+    form.reset();
   }
   onCancelTask() {
     this.cancel.emit();

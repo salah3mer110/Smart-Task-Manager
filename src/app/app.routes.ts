@@ -1,11 +1,6 @@
 import { Routes } from '@angular/router';
-import { Home } from './components/home/home';
-import { AddTask } from './components/add-task/add-task';
-import { TaskList } from './components/task-list/task-list';
-import { Login } from './components/login/login';
-import { SignUp } from './components/sign-up/sign-up';
-import { NotFound } from './components/not-found/not-found';
 import { Layout } from './components/layout/layout';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -19,29 +14,30 @@ export const routes: Routes = [
       },
       {
         path: 'home',
-        component: Home,
+        loadComponent: () => import('./components/home/home').then((m) => m.Home),
       },
       {
         path: 'addTask',
-        component: AddTask,
+        loadComponent: () => import('./components/add-task/add-task').then((m) => m.AddTask),
+        canActivate: [AuthGuard],
       },
       {
         path: 'taskList',
-        component: TaskList,
-        children: [],
+        loadComponent: () => import('./components/task-list/task-list').then((m) => m.TaskList),
+        canActivate: [AuthGuard],
       },
     ],
   },
   {
     path: 'login',
-    component: Login,
+    loadComponent: () => import('./components/login/login').then((m) => m.Login),
   },
   {
     path: 'signUp',
-    component: SignUp,
+    loadComponent: () => import('./components/sign-up/sign-up').then((m) => m.SignUp),
   },
   {
     path: '**',
-    component: NotFound,
+    loadComponent: () => import('./components/not-found/not-found').then((m) => m.NotFound),
   },
 ];

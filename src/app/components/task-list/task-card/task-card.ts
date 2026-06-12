@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
-import { Task } from '../../task.model';
-import { TasksService } from '../../tasksService.service';
+import { Task } from '../../../shared/models/task.model';
+import { TasksService } from '../../../shared/services/tasksService.service';
 
 @Component({
   selector: 'app-task-card',

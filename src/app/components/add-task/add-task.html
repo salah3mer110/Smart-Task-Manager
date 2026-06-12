@@ -3,7 +3,7 @@
 
         <h2 class="fw-bold mb-4">Add New Task</h2>
 
-        <form (ngSubmit)="onSubmitTask()">
+        <form #form="ngForm" (ngSubmit)="onSubmitTask(form)">
 
             <div class="mb-3">
                 <label for="title" class="form-label fw-semibold">Task Title</label>

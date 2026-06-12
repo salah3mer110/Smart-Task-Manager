@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TaskCard } from './task-card/task-card';
-import { Task } from '../task.model';
-import { TasksService } from '../tasksService.service';
+import { Task } from '../../shared/models/task.model';
+import { TasksService } from '../../shared/services/tasksService.service';
 
 @Component({
   selector: 'app-task-list',

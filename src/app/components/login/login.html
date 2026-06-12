@@ -1,1 +1,45 @@
-<p>login works!</p>
+<div class="min-vh-100 d-flex justify-content-center align-items-center"
+    style="background: linear-gradient(135deg, #184e8e, #21a9af);">
+    <div class="card shadow-lg border-0 rounded-4 p-5" style="width: 420px;">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold">Sign in</h2>
+        </div>
+        <form #form="ngForm" (ngSubmit)="onSubmit(form,email,password)">
+            <div class="mb-3">
+                <label for="email" class="form-label fw-semibold">Email Address</label>
+                <div class="input-group">
+                    <input ngModel #email="ngModel" name="email" type="email" class="form-control" id="email"
+                        placeholder="name@example.com" required
+                        pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$" />
+                </div>
+                @if(email.errors?.['pattern'] && email.dirty){
+                <p class="text-danger">Enter a valid email</p>
+                }
+                @if(email.value==''&& email.dirty){
+                <p class="text-danger">Email is required</p>
+                }
+            </div>
+            <div class="mb-4">
+                <label for="password" class="form-label fw-semibold">Password</label>
+                <div class="input-group">
+                    <input ngModel #password="ngModel" name="password" type="password" class="form-control"
+                        id="password" placeholder="Enter password" required minlength="8" />
+                </div>
+                @if(password.errors?.['minlength'] && password.dirty){
+                <p class="text-danger">Password length must be at least 8 characters</p>
+                }
+                @if(password.value==''&& password.dirty){
+                <p class="text-danger">Password is required</p>
+                }
+            </div>
+            @if(!wrongCredentials() && form.submitted){
+            <p class="text-danger">Invalid email or password!</p>
+            }
+            <button [disabled]="email.errors||password.errors" type="submit"
+                class="btn btn-primary w-100 py-2 fw-semibold">
+                Login
+            </button>
+
+        </form>
+    </div>
+</div>
